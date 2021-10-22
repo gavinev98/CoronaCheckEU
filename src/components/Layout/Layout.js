@@ -15,6 +15,7 @@ import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
 
 
 const drawerWidth = 240;
@@ -115,7 +116,9 @@ const Layout = (props) => {
               {drawer}
             </Drawer>
           </Box>
+          <Container fixed>
           {props.children}
+          </Container>
         </Box>
       );
     }
