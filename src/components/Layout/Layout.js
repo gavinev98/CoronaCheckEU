@@ -115,9 +115,7 @@ const Layout = (props) => {
               {drawer}
             </Drawer>
           </Box>
-
           {props.children}
-
         </Box>
       );
     }
