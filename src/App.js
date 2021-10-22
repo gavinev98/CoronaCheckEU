@@ -2,7 +2,7 @@
 import './App.css';
 
 import React from 'react';
-import SideDrawer from './components/SideDrawer/SideDrawer';
+import Layout from './components/Layout/Layout';
 
 
 
@@ -10,7 +10,7 @@ const App = () => {
   return (
     <div>
 
-      <SideDrawer />
+      <Layout />
       
     </div>
   );
