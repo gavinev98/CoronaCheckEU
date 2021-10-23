@@ -17,11 +17,16 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 
+import useStyles from './LayoutStyle.js'; 
+
+
+
 
 const drawerWidth = 240;
 
 const Layout = (props) => {
 
+    const classes = useStyles();
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
   
@@ -116,7 +121,7 @@ const Layout = (props) => {
               {drawer}
             </Drawer>
           </Box>
-          <Container fixed>
+          <Container fixed className={classes.customisedContainer} >
           {props.children}
           </Container>
         </Box>
