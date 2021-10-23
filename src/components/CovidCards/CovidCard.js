@@ -13,10 +13,10 @@ import useStyles from './CovidCardStyles.js';
 
 
 
+
 const CovidCard = () => {
 
-
-  const classes = useStyles();
+   const classes = useStyles();
 
 
     return (
