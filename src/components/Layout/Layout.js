@@ -121,7 +121,7 @@ const Layout = (props) => {
               {drawer}
             </Drawer>
           </Box>
-          <Container maxWidth="lg" className={classes.customisedContainer} >
+          <Container style={{ display : 'flex', alignItems: 'center'}} maxWidth="lg" className={classes.customisedContainer} >
           {props.children}
           </Container>
         </Box>

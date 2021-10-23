@@ -6,6 +6,7 @@ export default makeStyles((theme) => ({
       customisedContainer : {
         background : 'red',
         marginTop: '5%',
+        height: '250px',
       },
 
 }));
