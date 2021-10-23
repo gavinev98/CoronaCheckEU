@@ -20,7 +20,7 @@ const CovidCard = () => {
 
 
     return (
-  <Card sx={{ maxWidth: 250 }}>
+  <Card style={{ width: 200, height: 200}}>
       <CardContent>
         <Typography  className={classes.customTypographyH1} gutterBottom>
           Infections
