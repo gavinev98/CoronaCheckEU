@@ -4,36 +4,39 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import PageviewIcon from '@mui/icons-material/Pageview';
+import { green, pink } from '@mui/material/colors';
+import Avatar from '@mui/material/Avatar';
+import Stack from '@mui/material/Stack';
+
+import useStyles from './CovidCardStyles.js';
 
 
 
 const CovidCard = () => {
 
 
-
+  const classes = useStyles();
 
 
     return (
-  <Card sx={{ minWidth: 275 }}>
+  <Card sx={{ maxWidth: 250 }}>
       <CardContent>
-        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-          Word of the Day
+        <Typography  className={classes.customTypographyH1} gutterBottom>
+          Infections
         </Typography>
-        <Typography variant="h5" component="div">
-         COVID
+        <Avatar sx={{ bgcolor: pink[500] }}>
+          <PageviewIcon />
+         </Avatar>
+        <Typography sx={{ mb: 1.5, textAlign: 'center' }} color="text.secondary">
+          1000
         </Typography>
-        <Typography sx={{ mb: 1.5 }} color="text.secondary">
-          adjective
-        </Typography>
-        <Typography variant="body2">
-          well meaning and kindly.
+        <Typography variant="body2" style={{textAlign: 'center'}}>
+          Last Update : 14:30
           <br />
-          {'"a benevolent smile"'}
         </Typography>
       </CardContent>
-      <CardActions>
-        <Button size="small">Learn More</Button>
-      </CardActions>
+
     </Card>
     );
 };
