@@ -22,14 +22,10 @@ const CovidCard = ({ globalStats }) => {
    const classes = useStyles();
 
    //set state for just global statistics.
-   const[globalData, setGlobalData] = useState(globalStats.Global);
+   const[globalData, setGlobalData] = useState([globalStats.Global]);
 
 
-   //useEffect function
-   useEffect(() => {
-    //set state of globalData
-    setGlobalData(globalStats.Global);
-  });
+
 
     //set loading to spinner
     let loading = <Loader type="Puff" color="#00BFFF" height={100} width={100}/>
@@ -38,17 +34,17 @@ const CovidCard = ({ globalStats }) => {
     let statistics = (
       <Grid container spacing={1}>
      <Grid container item spacing={3}>
-    {Object.keys(globalStats).map((keyName, keyValue) => (
-    <Card key={keyValue} style={{ width: 200, height: 200}}>
+    {globalData.map(stats => (
+    <Card  style={{ width: 200, height: 200}}>
       <CardContent>
         <Typography  className={classes.customTypographyH1} gutterBottom>
-        {keyName}
+      
         </Typography>
         <Avatar sx={{ bgcolor: pink[500] }}>
           <PageviewIcon />
          </Avatar>
         <Typography sx={{ mb: 1.5, textAlign: 'center' }} color="text.secondary">
-        
+    
         </Typography>
         <Typography variant="body2" style={{textAlign: 'center'}}>
           Last Update : 14:30
