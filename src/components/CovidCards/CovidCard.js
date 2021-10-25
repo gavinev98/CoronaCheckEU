@@ -9,8 +9,10 @@ import { green, pink } from '@mui/material/colors';
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
 import Grid from '@mui/material/Grid';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import useStyles from './CovidCardStyles.js';
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import Loader from "react-loader-spinner";
 
 
 
@@ -22,12 +24,22 @@ const CovidCard = ({ globalStats }) => {
    //set state for just global statistics.
    const[globalData, setGlobalData] = useState(globalStats.Global);
 
- 
-    return (
+
+   //useEffect function
+   useEffect(() => {
+    //set state of globalData
+    setGlobalData(globalStats.Global);
+  });
+
+    //set loading to spinner
+    let loading = <Loader type="Puff" color="#00BFFF" height={100} width={100}/>
+
+
+    let statistics = (
       <Grid container spacing={1}>
      <Grid container item spacing={3}>
-  {Object.keys(globalData).map((keyName, keyValue) => (
-  <Card key={keyValue} style={{ width: 200, height: 200}}>
+    {Object.keys(globalStats).map((keyName, keyValue) => (
+    <Card key={keyValue} style={{ width: 200, height: 200}}>
       <CardContent>
         <Typography  className={classes.customTypographyH1} gutterBottom>
         {keyName}
@@ -43,13 +55,17 @@ const CovidCard = ({ globalStats }) => {
           <br />
         </Typography>
       </CardContent>
-
     </Card>
-
     ))};
 
     </Grid>
-    </Grid>
+    </Grid>);
+
+
+    return (
+
+    globalData ? statistics : loading
+
   
     )};
 
