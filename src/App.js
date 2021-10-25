@@ -40,7 +40,7 @@ const App = () => {
 
       <Layout >
 
-      <CovidCard />
+      <CovidCard globalStats={covidData} />
 
       </Layout>
       
