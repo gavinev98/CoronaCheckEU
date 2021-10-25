@@ -21,12 +21,13 @@ const CovidCard = ({ globalStats }) => {
 
 
     return (
-  <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+      <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
     <Grid item xs={6}>
-  <Card style={{ width: 200, height: 200}}>
+  {Object.keys(globalStats).map((keyName, keyValue) => (
+  <Card key={keyValue} style={{ width: 200, height: 200}}>
       <CardContent>
         <Typography  className={classes.customTypographyH1} gutterBottom>
-          Random Text
+        {globalStats.Global.keyName}
         </Typography>
         <Avatar sx={{ bgcolor: pink[500] }}>
           <PageviewIcon />
@@ -41,9 +42,12 @@ const CovidCard = ({ globalStats }) => {
       </CardContent>
 
     </Card>
+
+    ))};
+
     </Grid>
     </Grid>
-    );
-};
+  
+    )};
 
 export default CovidCard;
