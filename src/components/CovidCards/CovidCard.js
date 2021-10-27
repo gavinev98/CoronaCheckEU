@@ -17,26 +17,24 @@ import Loader from "react-loader-spinner";
 
 
 
-const CovidCard = ({ globalStats }) => {
+const CovidCard = ({ title, result }) => {
 
    const classes = useStyles();
 
 
-    //set loading to spinner
-    let loading = <Loader type="Puff" color="#00BFFF" height={100} width={100}/>
 
+    return (
 
-    let statistics = (
-    <Card  style={{ width: 200, height: 200}}>
+      <Card  style={{ width: 200, height: 200}}>
       <CardContent>
         <Typography  className={classes.customTypographyH1} gutterBottom>
-        
+        {title}
         </Typography>
         <Avatar sx={{ bgcolor: pink[500] }}>
           <PageviewIcon />
          </Avatar>
         <Typography sx={{ mb: 1.5, textAlign: 'center' }} color="text.secondary">
-    
+       {result}
         </Typography>
         <Typography variant="body2" style={{textAlign: 'center'}}>
           Last Update : 14:30
@@ -44,13 +42,8 @@ const CovidCard = ({ globalStats }) => {
         </Typography>
       </CardContent>
     </Card>
-    );
 
-
-    return (
-
-    globalStats == undefined ? loading : statistics
-
+  
   
     )};
 
