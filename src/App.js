@@ -10,6 +10,7 @@ import Loader from "react-loader-spinner";
 //importing api 
 import * as covidAPI from './api/covidData';
 import { useState, useEffect } from 'react';
+import Box from '@mui/material/Box';
 
 
 
@@ -37,22 +38,22 @@ const App = () => {
     <div>
 
       <Layout >
-
-      <Grid container spacing={1}>
-      <Grid container item spacing={3}> 
+      <Box sx={{ width: '100%' }}>
+      <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+     
      {
        covidData.length != 0
        ?
      Object.entries(covidData).map(([key, value]) => {
 
-       return <CovidCard key={key} title={key} result={covidData[key]} />
-       
+       return  <Grid item xs={2} sm={4} md={4}> <CovidCard key={key} title={key} result={covidData[key]} />  </Grid>
+
       })
       :
       <Loader type="Puff" color="#00BFFF" height={100} width={100}/>
     }
       </Grid>
-      </Grid>
+      </Box>
       </Layout>
     </div>
   );

@@ -72,6 +72,7 @@ const Layout = (props) => {
             sx={{
               width: { sm: `calc(100% - ${drawerWidth}px)` },
               ml: { sm: `${drawerWidth}px` },
+
             }}
           >
             <Toolbar>
@@ -121,9 +122,9 @@ const Layout = (props) => {
               {drawer}
             </Drawer>
           </Box>
-          <Container style={{ display : 'flex', alignItems: 'center'}} maxWidth="lg" className={classes.customisedContainer} >
+          
           {props.children}
-          </Container>
+  
         </Box>
       );
     }

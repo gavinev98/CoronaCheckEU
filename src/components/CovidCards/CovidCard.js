@@ -21,10 +21,6 @@ const CovidCard = ({ title, result }) => {
 
    const classes = useStyles();
 
-
-    //set loading to spinner
-    let loading = <Loader type="Puff" color="#00BFFF" height={100} width={100}/>
-
     return (
 
       <Card  style={{ width: 200, height: 200}}>
