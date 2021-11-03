@@ -23,7 +23,7 @@ const CovidCard = ({ title, result }) => {
 
     return (
 
-      <Card  style={{ width: 200, height: 200}}>
+      <Card  style={{ width: 300, height: 300}}>
       <CardContent>
         <Typography  className={classes.customTypographyH1} gutterBottom>
         {title}

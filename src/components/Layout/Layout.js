@@ -65,6 +65,7 @@ const Layout = (props) => {
       const container = window !== undefined ? () => window().document.body : undefined;
     
       return (
+        <div>
     <    Box sx={{ display: 'flex' }}>
           <CssBaseline />
           <AppBar
@@ -122,10 +123,14 @@ const Layout = (props) => {
               {drawer}
             </Drawer>
           </Box>
-          
-          {props.children}
-  
+
+          <div>
+        {props.children}
+        </div>
+
         </Box>
+
+        </div>
       );
     }
     
