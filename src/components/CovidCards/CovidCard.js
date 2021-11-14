@@ -35,7 +35,6 @@ const CovidCard = ({ title, result }) => {
        {result}
         </Typography>
         <Typography variant="body2" style={{textAlign: 'center'}}>
-          Last Update : 14:30
           <br />
         </Typography>
       </CardContent>

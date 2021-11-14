@@ -12,6 +12,7 @@ import * as covidAPI from './api/covidData';
 import { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
 import { makeStyles } from "@material-ui/core/styles";
+import LastUpdate from './components/LastUpdate/LastUpdate';
 
 
 
@@ -58,6 +59,7 @@ const App = () => {
 
     <div>
       <Layout >
+        <LastUpdate lastUpdate={covidData.Date} />
       <Grid container spacing={1}>
      {
        covidData.length != 0
