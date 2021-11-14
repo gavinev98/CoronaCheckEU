@@ -13,6 +13,7 @@ import { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
 import { makeStyles } from "@material-ui/core/styles";
 import LastUpdate from './components/LastUpdate/LastUpdate';
+import moment from 'moment';
 
 
 
@@ -25,6 +26,9 @@ const App = () => {
       const[c19Data, setc19Data] = useState([]);
      //state for storing state of error
       const[error, setError] = useState('');
+
+          //convert date to correct format using moment js.
+      const formattedDate = moment(covidData.Date).format('MMMM Do YYYY, h:mm:ss a');
 
 
 
@@ -59,7 +63,7 @@ const App = () => {
 
     <div>
       <Layout >
-        <LastUpdate lastUpdate={covidData.Date} />
+        <LastUpdate lastUpdate={formattedDate} />
       <Grid container spacing={1}>
      {
        covidData.length != 0
@@ -73,6 +77,7 @@ const App = () => {
       <Loader type="Puff" color="#00BFFF" height={100} width={100}/>
     }
       </Grid>
+      <LastUpdate lastUpdate="Graphical View" />
       </Layout> 
     </div>
   );
