@@ -66,7 +66,7 @@ const Layout = (props) => {
     
       return (
         <div>
-    <    Box sx={{ display: 'flex' }}>
+    <    Box sx={{ display: 'flex', padding: '5%' }}>
           <CssBaseline />
           <AppBar
             position="fixed"
@@ -76,7 +76,7 @@ const Layout = (props) => {
 
             }}
           >
-            <Toolbar>
+            <Toolbar style={{}}>
               <IconButton
                 color="inherit"
                 aria-label="open drawer"
@@ -87,7 +87,7 @@ const Layout = (props) => {
                 <MenuIcon />
               </IconButton>
               <Typography variant="h6" noWrap component="div">
-                Responsive drawer
+                COVID 19 Data Dashboard
               </Typography>
             </Toolbar>
           </AppBar>
