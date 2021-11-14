@@ -11,8 +11,8 @@ const LastUpdate = (props) => {
     const formattedDate = moment(props.lastUpdate).format('MMMM Do YYYY, h:mm:ss a');
 
     return (
-        <Container maxWidth="sm">
-        <Typography variant="h1">{formattedDate}</Typography>
+        <Container maxWidth="lg" style={{paddingBottom: '2%'}}>
+        <Typography variant="h3" style={{textAlign: 'center', verticalAlign: 'middle'}}>{formattedDate}</Typography>
         </Container>
 
     );
