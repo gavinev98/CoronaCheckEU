@@ -15,12 +15,16 @@ import { makeStyles } from "@material-ui/core/styles";
 
 
 
+
 const App = () => {
 
      //state for storing covid data.
       const[covidData, setCovidData] = useState([]);
+    //set state for data to be displayed
+      const[c19Data, setc19Data] = useState([]);
      //state for storing state of error
       const[error, setError] = useState('');
+
 
 
     useEffect(() => {
@@ -28,10 +32,10 @@ const App = () => {
         covidAPI.covidInfections().then(res =>{
         setCovidData(res.data.Global)
     }).catch(error => setError(error))}, 15000);
-
-    return () => clearInterval(interval);
-    
+    return () => clearInterval(interval);  
     });
+
+
 
     const useStyles = makeStyles((theme) => ({
       container: {
@@ -51,18 +55,18 @@ const App = () => {
     const classes = useStyles();
 
   return (
-    <div>
 
+    <div>
       <Layout >
       <Grid container spacing={1}>
      {
        covidData.length != 0
        ?
      Object.entries(covidData).map(([key, value]) => {
+ 
+       {return key !== 'Date' ? <Grid item xs={12} sm={6} md={3}> <CovidCard key={key} title={key} result={covidData[key]} /> </Grid> : <></>;
 
-       return <Grid item xs={12} sm={6} md={3}> <CovidCard key={key} title={key} result={covidData[key]} /> </Grid>
-
-      })
+      }})
       :
       <Loader type="Puff" color="#00BFFF" height={100} width={100}/>
     }
