@@ -6,6 +6,7 @@ import Layout from './components/Layout/Layout';
 import CovidCard from './components/CovidCards/CovidCard';
 import Grid from '@mui/material/Grid';
 import Loader from "react-loader-spinner";
+import Graph from './components/Graph/Graph';
 
 //importing api 
 import * as covidAPI from './api/covidData';
@@ -78,6 +79,7 @@ const App = () => {
     }
       </Grid>
       <LastUpdate lastUpdate="Graphical View" />
+      <Graph />
       </Layout> 
     </div>
   );

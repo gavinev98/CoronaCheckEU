@@ -17,12 +17,24 @@ const Graph = () => {
         ],
       };
 
+      const options = {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      };
+
 
 
     return (
-        <div>
-            
+        <>
+        <div className='header'>
+        <h1 className='title'>Covid Data Placeholder</h1>
+
         </div>
+        <Line data={data} options={options} />
+        </>
     );
 };
 
