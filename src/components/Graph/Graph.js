@@ -1,5 +1,7 @@
 import React from 'react';
 import { Line } from 'react-chartjs-2';
+import TextField from '@mui/material/TextField';
+import Autocomplete from '@mui/material/Autocomplete';
 
 
 const Graph = () => {
@@ -30,7 +32,12 @@ const Graph = () => {
     return (
         <>
         <div className='header'>
-        <h1 className='title'>Covid Data Placeholder</h1>
+        <Autocomplete
+            disablePortal
+            id="countries"
+            sx={{ width: 300, alignItems: 'center' }}
+            renderInput={(params) => <TextField {...params} label="Countries" />}
+        />
 
         </div>
         <Line data={data} options={options} />
