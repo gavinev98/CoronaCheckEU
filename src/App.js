@@ -23,8 +23,8 @@ const App = () => {
 
      //state for storing covid data.
       const[covidData, setCovidData] = useState([]);
-    //set state for data to be displayed
-      const[c19Data, setc19Data] = useState([]);
+    //set state for countries supported by API
+      const[countries, setCountries] = useState([]);
      //state for storing state of error
       const[error, setError] = useState('');
 
@@ -34,11 +34,18 @@ const App = () => {
 
 
     useEffect(() => {
-      const interval = setInterval(() => { 
+      const retrieveCovidInfections = setInterval(() => { 
         covidAPI.covidInfections().then(res =>{
         setCovidData(res.data.Global)
     }).catch(error => setError(error))}, 15000);
-    return () => clearInterval(interval);  
+
+    const retrieveCountries = setInterval(() => {
+      covidAPI.covidCountries().then(res =>{
+        setCountries(res.data)
+      }).catch(error => setError(error))}, 15000);
+
+
+    return () => clearInterval(retrieveCovidInfections, retrieveCountries);  
     });
 
 
