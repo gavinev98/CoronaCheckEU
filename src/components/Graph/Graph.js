@@ -9,6 +9,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select'
+import { Menu } from '@mui/material';
 
 
 
@@ -24,6 +25,14 @@ const Graph = (props) => {
       //set coutnry selected to dropdown value
       setCountrySelected(event.target.value);
     }
+
+
+    const countriesFormatted = Object.entries(props.countries).map((key, value) => {
+      return (
+       key == 'Country' ? <MenuItem key={value} value={value} children={value}></MenuItem> : []
+      );
+    });
+
 
 
 
@@ -52,17 +61,15 @@ const Graph = (props) => {
     return (
         <>
       <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">Age</InputLabel>
+        <InputLabel id="countryLabel">Country</InputLabel>
         <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value="10"
-          label="Age"
-          onChange="test"
+          labelId="CountrySelected"
+          id="country"
+          value={country}
+          label="Country"
+          onChange={handleChange}
         >
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
+        {countriesFormatted}
         </Select>
       </FormControl>
 
