@@ -26,12 +26,13 @@ const Graph = (props) => {
       setCountrySelected(event.target.value);
     }
 
+    //valid list of countries to display in dropdown.
+    const validCountries = props.countries.map((place) =>    
+    <MenuItem key={place.Country} value={place.Country} children={place.Country}></MenuItem> 
+  );
 
-    const countriesFormatted = Object.entries(props.countries).map((key, value) => {
-      return (
-       key == 'Country' ? <MenuItem key={value} value={value} children={value}></MenuItem> : []
-      );
-    });
+  
+
 
 
 
@@ -69,7 +70,7 @@ const Graph = (props) => {
           label="Country"
           onChange={handleChange}
         >
-        {countriesFormatted}
+        {validCountries}
         </Select>
       </FormControl>
 
