@@ -80,7 +80,7 @@ const App = () => {
        ?
      Object.entries(covidData).map(([key, value]) => {
  
-       {return key !== 'Date' ? <Grid item xs={12} sm={6} md={3}> <CovidCard key={key} title={key} result={covidData[key]} /> </Grid> : <></>;
+       {return key !== 'Date' ? <Grid key={key} item xs={12} sm={6} md={3}> <CovidCard key={key} title={key} result={covidData[key]} /> </Grid> : <></>;
 
       }})
       :
