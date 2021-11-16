@@ -34,11 +34,13 @@ const App = () => {
 
 
     useEffect(() => {
+      //retrieve all stats since begining of pandemic.
       const retrieveCovidInfections = setInterval(() => { 
         covidAPI.covidInfections().then(res =>{
         setCovidData(res.data.Global)
     }).catch(error => setError(error))}, 15000);
 
+    //retrieve countries supported by the covid 19 api.
     const retrieveCountries = setInterval(() => {
       covidAPI.covidCountries().then(res =>{
         setCountries(res.data)
@@ -86,7 +88,7 @@ const App = () => {
     }
       </Grid>
       <LastUpdate lastUpdate="Graphical View" />
-      <Graph />
+      <Graph countries={countries} />
       </Layout> 
     </div>
   );

@@ -1,10 +1,31 @@
 import React from 'react';
+import { useState } from 'react'
 import { Line } from 'react-chartjs-2';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 
+import Box from '@mui/material/Box';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select'
 
-const Graph = () => {
+
+
+const Graph = (props) => {
+
+
+    //creating state to store country selected.
+    const[country, setCountrySelected] = useState('');
+
+
+    //handle state to setCountry to one selected.
+    const handleChange = (event) => {
+      //set coutnry selected to dropdown value
+      setCountrySelected(event.target.value);
+    }
+
+
 
     const data = {
         labels: ['1', '2', '3', '4', '5', '6'],
@@ -28,18 +49,23 @@ const Graph = () => {
       };
 
 
-
     return (
         <>
-        <div className='header'>
-        <Autocomplete
-            disablePortal
-            id="countries"
-            sx={{ width: 300, alignItems: 'center' }}
-            renderInput={(params) => <TextField {...params} label="Countries" />}
-        />
+      <FormControl fullWidth>
+        <InputLabel id="demo-simple-select-label">Age</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value="10"
+          label="Age"
+          onChange="test"
+        >
+          <MenuItem value={10}>Ten</MenuItem>
+          <MenuItem value={20}>Twenty</MenuItem>
+          <MenuItem value={30}>Thirty</MenuItem>
+        </Select>
+      </FormControl>
 
-        </div>
         <Line data={data} options={options} />
         </>
     );
