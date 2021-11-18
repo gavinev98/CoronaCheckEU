@@ -23,18 +23,18 @@ const Graph = (props) => {
     const[country, setCountrySelected] = useState('');
     //creating state to store covid data for specific country.
     const[countryData, setCountryData] = useState([]);
-    const[dateRange, setDateRange] = useState('');
     //state for storing state of error
     const[error, setError] = useState('');
 
-
+   
 
     //run api function when the country state changes to retrieve info.
     useEffect(() => {
+      //date to retrieve latest covid stats daily
+      var today = new Date().toJSON();
       //execute api function to retrieve details of country.
-      covidAPI.covidCountry(country).then(res => {
+      covidAPI.covidCountry(country, today).then(res => {
         setCountryData(res.data);
-        setDateRange(new Date().toJSON());
       }).catch(error => setError(error));
     }, [country]);
 
