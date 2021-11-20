@@ -26,14 +26,26 @@ const Graph = (props) => {
     //state for storing state of error
     const[error, setError] = useState('');
 
+
+    //date to retrieve latest covid stats daily
+    var today = new Date();
+    //need to format the time setting so that api correctly retrieve specific data.
+    today.setHours(0,0,0,0)
+    //parsing date to json for api call
+    var todayToJson = today.toJSON();
+    //getting yesterdays date,
+    var yesterday = new Date((new Date() - 86400000));
+    //need to format yesterdays time setting so that api can correctly retrieve specific data
+    yesterday.setHours(0,0,0,0);
+    //parsing date to json for api call.
+    var yesterdayToJson = yesterday.toJSON()
+
    
 
     //run api function when the country state changes to retrieve info.
     useEffect(() => {
-      //date to retrieve latest covid stats daily
-      var today = new Date().toJSON();
       //execute api function to retrieve details of country.
-      covidAPI.covidCountry(country, today).then(res => {
+      covidAPI.covidCountry(country, yesterdayToJson, todayToJson).then(res => {
         setCountryData(res.data);
       }).catch(error => setError(error));
     }, [country]);
