@@ -62,13 +62,18 @@ const Graph = (props) => {
     <MenuItem key={place.Country} value={place.Country} children={place.Country}></MenuItem> 
   );
 
+    //using x axis to display range of dates for the last 7 days.
+    let start = new Date(),
+    end = new Date();
+
+    start.setDate(start.getDate() - 7); // set to 'now' minus 7 days.
+    start.setHours(0, 0, 0, 0); // set to midnight.
   
 
     const data = {
-        labels: ['1', '2', '3', '4', '5', '6'],
         datasets: [
           {
-            label: '# of Votes',
+            label: 'Cases',
             data: [12, 19, 3, 5, 2, 3],
             fill: false,
             backgroundColor: 'rgb(255, 99, 132)',
@@ -81,7 +86,15 @@ const Graph = (props) => {
         scales: {
           y: {
             beginAtZero: true
-          }
+          },
+          x: [{
+            type: 'time',
+            time : {
+              min: start,
+              max: end,
+              unit: 'day'
+            }
+          }]
         }
       };
 
