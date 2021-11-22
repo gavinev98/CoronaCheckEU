@@ -1,6 +1,5 @@
 import React from 'react';
 import { useState, useEffect } from 'react'
-import { Line } from 'react-chartjs-2';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 
@@ -10,6 +9,9 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select'
 import { Menu } from '@mui/material';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, AreaChart, Area } from 'recharts';
+
+import { Chart } from "react-google-charts";
 
 
 import * as covidAPI from '../../api/covidData';
@@ -26,6 +28,8 @@ const Graph = (props) => {
     //state for storing state of error
     const[error, setError] = useState('');
 
+    
+
 
     //date to retrieve latest covid stats daily
     var today = new Date();
@@ -34,7 +38,7 @@ const Graph = (props) => {
     //parsing date to json for api call
     var todayToJson = today.toJSON();
     //getting yesterdays date,
-    var yesterday = new Date((new Date() - 86400000));
+    var yesterday = new Date(new Date().setDate(new Date().getDate() - 5));
     //need to format yesterdays time setting so that api can correctly retrieve specific data
     yesterday.setHours(0,0,0,0);
     //parsing date to json for api call.
@@ -62,6 +66,8 @@ const Graph = (props) => {
     <MenuItem key={place.Country} value={place.Country} children={place.Country}></MenuItem> 
   );
 
+  
+
     //using x axis to display range of dates for the last 7 days.
     let start = new Date(),
     end = new Date();
@@ -69,35 +75,6 @@ const Graph = (props) => {
     start.setDate(start.getDate() - 7); // set to 'now' minus 7 days.
     start.setHours(0, 0, 0, 0); // set to midnight.
   
-
-    const data = {
-        datasets: [
-          {
-            label: 'Cases',
-            data: [12, 19, 3, 5, 2, 3],
-            fill: false,
-            backgroundColor: 'rgb(255, 99, 132)',
-            borderColor: 'rgba(255, 99, 132, 0.2)',
-          },
-        ],
-      };
-
-      const options = {
-        scales: {
-          y: {
-            beginAtZero: true
-          },
-          x: [{
-            type: 'time',
-            time : {
-              min: start,
-              max: end,
-              unit: 'day'
-            }
-          }]
-        }
-      };
-
 
     return (
         <>
@@ -114,7 +91,30 @@ const Graph = (props) => {
         </Select>
       </FormControl>
 
-        <Line data={data} options={options} />
+
+
+      <Chart
+  width={'600px'}
+  height={'400px'}
+  chartType="Line"
+  loader={<div>Loading Chart</div>}
+  data={[
+    [
+      'Day',
+      'Cases',
+    ],
+    [1, countryData.Cases,],
+  ]}
+  options={{
+    chart: {
+      title: 'Current Selected country is: ' + `${country}`,
+      subtitle: '',
+    },
+  }}
+  rootProps={{ 'data-testid': '3' }}
+/>
+
+
         </>
     );
 };
